@@ -20,6 +20,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
 
 /**
  * Classe elementar de representacao da API do Eventick
@@ -87,6 +89,7 @@ public class EventickAPI {
 	/**
 	 * Otenha qualquer um de seus eventos a partir do id
 	 * @param id, ID do evento
+	 * @return 
 	 * @return um objeto {@link Event} daquele evento
 	 * @throws IOException 
 	 */
@@ -94,9 +97,12 @@ public class EventickAPI {
 		String fetchURL = String.format("%s/events/%d", URL, id);
 		String json = requests.get(fetchURL, this.getToken());
 		
-		Event eve = gson.fromJson(json, Event.class);
-		eve.setApi(this);
+        // System.out.println(json);
 		
+		JsonObject jsonObject = gson.fromJson(json, JsonElement.class).getAsJsonObject();
+		JsonArray jsonArray = jsonObject.get("events").getAsJsonArray();
+		
+	    Event eve = gson.fromJson(jsonArray.get(0), Event.class);
 		return eve;
 	}
 }

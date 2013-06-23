@@ -14,6 +14,8 @@ public class Main {
 		int idEvento = 492;
 		Event evento = api.getEventById(idEvento);
 	
+		api.getEventById(idEvento);
+		
 		System.out.println(evento.getTitle());
 	}
 }

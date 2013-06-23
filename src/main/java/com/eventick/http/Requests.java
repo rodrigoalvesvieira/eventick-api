@@ -27,7 +27,7 @@ public class Requests {
 	public String get(String urlStr, String token) throws IOException {
 		try {
 			String encoded = URLEncoder.encode(token + ":", "UTF-8");
-			this.asyncClient.prepareGet(urlStr).addHeader("Authorization", "Basic " + encoded).execute().get().getResponseBody();
+			return this.asyncClient.prepareGet(urlStr).addHeader("Authorization", "Basic " + encoded).execute().get().getResponseBody();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 			try {
