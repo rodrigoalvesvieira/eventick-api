@@ -65,7 +65,7 @@ public class EventickAPI {
 		List<Event> collection = null;
 		
 		String fetchURL = String.format("%s/events", URL);
-		String json = requests.get(fetchURL);
+		String json = requests.get(fetchURL, this.getToken());
 		JsonObject jsonObject = gson.fromJson(json, JsonElement.class).getAsJsonObject();			
 		JsonArray jsonArray = jsonObject.get("events").getAsJsonArray();
 		
@@ -92,7 +92,7 @@ public class EventickAPI {
 	 */
 	public Event getEventById(int id) throws IOException {	
 		String fetchURL = String.format("%s/events/%d", URL, id);
-		String json = requests.get(fetchURL);
+		String json = requests.get(fetchURL, this.getToken());
 		
 		Event eve = gson.fromJson(json, Event.class);
 		eve.setApi(this);

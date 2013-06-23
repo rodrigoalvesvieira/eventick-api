@@ -106,7 +106,7 @@ public class Event {
 
 	public void setAttendees() throws IOException {
 		String fetchURL = String.format("%s/%d/attendees", URL, this.id);
-		String json = api.getRequests().get(fetchURL);
+		String json = api.getRequests().get(fetchURL, this.getApi().getToken());
 		JsonObject jsonObject = api.getGson().fromJson(json, JsonElement.class).getAsJsonObject();			
 		JsonArray jsonArray = jsonObject.get("attendees").getAsJsonArray();
 		
@@ -130,7 +130,7 @@ public class Event {
 	
 	public void setTickets() throws IOException {
 		String fetchURL = String.format("%s/%d", URL);
-		String json = api.getRequests().get(fetchURL);
+		String json = api.getRequests().get(fetchURL, this.getApi().getToken());
 		JsonObject jsonObject = api.getGson().fromJson(json, JsonElement.class).getAsJsonObject();			
 		JsonArray jsonArray = jsonObject.get("tickets").getAsJsonArray();
 		
