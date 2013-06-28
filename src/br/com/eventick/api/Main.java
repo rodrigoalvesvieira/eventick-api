@@ -1,4 +1,4 @@
-package main.java.com.eventick.api;
+package br.com.eventick.api;
 
 import java.io.IOException;
 

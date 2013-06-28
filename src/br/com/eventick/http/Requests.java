@@ -1,4 +1,4 @@
-package main.java.com.eventick.http;
+package br.com.eventick.http;
 
 import java.io.IOException;
 import java.io.InputStream;

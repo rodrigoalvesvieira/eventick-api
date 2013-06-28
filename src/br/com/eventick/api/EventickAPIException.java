@@ -11,7 +11,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package main.java.com.eventick.api;
+package br.com.eventick.api;
 
 /**
  * Classe base de todos os erros oriundos da API do Eventick

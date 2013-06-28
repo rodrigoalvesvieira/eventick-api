@@ -11,11 +11,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package main.java.com.eventick.api;
+package br.com.eventick.api;
 
 import java.io.IOException;
 import java.util.List;
-import main.java.com.eventick.http.Requests;
+
+import br.com.eventick.http.Requests;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
