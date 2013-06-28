@@ -35,8 +35,7 @@ Event evento = api.getEventById(idEvento);
 List<Attendee> = evento.getAttendees();
 
 // Obtenha a lista de ingressos daquele evento
-List<Attendee> = evento.getTickets();
-
+List<Ticket> = evento.getTickets();
 ```
 
 ## Licença
