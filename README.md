@@ -5,7 +5,7 @@ Wrapper Java para a API JSON do Eventick
 Para mais informações sobre a API em si, visite sua página oficial http://developer.eventick.com.br/
 
 * Versão suportada da API: V1
-* Versão do wrapper: 0.0.1-beta
+* Versão do wrapper: 0.1.0
 
 ## Uso
 
