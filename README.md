@@ -31,6 +31,13 @@ List<Event> = api.getMyEvents();
 int idEvento = 1000;
 Event evento = api.getEventById(idEvento);
 
+evento.getTitle();      // retorna título do evento
+evento.getVenue();      // retorna local do evento
+evento.getStart_at();   // data de início do evento
+evento.getAPIURL());    // URL do evento na API
+
+evento.getEventWebsiteURL() // URL do evento no site (URL para humanos)
+
 // Obtenha a lista de participantes daquele evento
 List<Attendee> = evento.getAttendees();
 
