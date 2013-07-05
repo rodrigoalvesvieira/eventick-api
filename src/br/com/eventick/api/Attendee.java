@@ -51,6 +51,10 @@ public class Attendee {
 		this.id = id;
 	}
 
+	/**
+	 * Informa o nome do participante ({@link Attendee})
+	 * @return um objeto {@link String}
+	 */
 	public String getName() {
 		return this.name;
 	}

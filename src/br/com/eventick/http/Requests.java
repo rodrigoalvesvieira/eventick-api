@@ -9,6 +9,8 @@ import java.util.concurrent.ExecutionException;
 import com.ning.http.client.AsyncCompletionHandler;
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.ListenableFuture;
+import com.ning.http.client.Realm;
+import com.ning.http.client.Realm.AuthScheme;
 import com.ning.http.util.Base64;
 
 public class Requests {
@@ -23,29 +25,18 @@ public class Requests {
 	 * @param urlStr
 	 * @return
 	 * @throws IOException
+	 * @throws ExecutionException 
+	 * @throws InterruptedException 
 	 */
-	public String get(String urlStr, String token) throws IOException {
-		try {
-			String encoded = URLEncoder.encode(token + ":", "UTF-8");
-			return this.asyncClient.prepareGet(urlStr).addHeader("Authorization", "Basic " + encoded).execute().get().getResponseBody();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-			try {
-				throw new HttpException(e);
-			} catch (HttpException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		} catch (ExecutionException e) {
-			e.printStackTrace();
-			try {
-				throw new HttpException(e);
-			} catch (HttpException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}
-		return urlStr;
+	public String get(String urlStr, String token) throws IOException, InterruptedException, ExecutionException {
+		Realm realm = new Realm.RealmBuilder()
+		                       .setPrincipal(token)
+		                       .setPassword("")
+		                       .setUsePreemptiveAuth(true)
+		                       .setScheme(AuthScheme.BASIC)
+		                       .build();
+		
+		return asyncClient.prepareGet(urlStr).setRealm(realm).execute().get().getResponseBody(); 
 	}
 	
 	public <T> ListenableFuture<T> getAsync(String urlStr, AsyncCompletionHandler<T> callback) throws IOException {

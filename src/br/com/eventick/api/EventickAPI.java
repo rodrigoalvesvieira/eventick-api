@@ -14,7 +14,10 @@
 package br.com.eventick.api;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import br.com.eventick.http.Requests;
 
@@ -34,6 +37,7 @@ import com.google.gson.stream.JsonReader;
 public class EventickAPI {
 	private final Gson gson;
 	private final Requests requests;
+    private final DateFormat df;
 	
 	public static String URL = "https://www.eventick.com.br/api/v1";
 	private String token;
@@ -42,6 +46,7 @@ public class EventickAPI {
 		this.gson = new Gson();
 		this.requests = new Requests();
 		this.token = token;
+		this.df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
 	}
 
 	public String getToken() {
@@ -64,8 +69,10 @@ public class EventickAPI {
 	 * Retorna a colecao de eventos do usuario
 	 * @return
 	 * @throws IOException 
+	 * @throws InterruptedException 
+	 * @throws ExecutionException 
 	 */
-	public List<Event> getMyEvents() throws IOException {
+	public List<Event> getMyEvents() throws IOException, InterruptedException, ExecutionException {
 		List<Event> collection = null;
 		
 		String fetchURL = String.format("%s/events", URL);
@@ -94,13 +101,13 @@ public class EventickAPI {
 	 * @return 
 	 * @return um objeto {@link Event} daquele evento
 	 * @throws IOException 
+	 * @throws ExecutionException 
+	 * @throws InterruptedException 
 	 */
-	public Event getEventById(int id) throws IOException {	
+	public Event getEventById(int id) throws IOException, InterruptedException, ExecutionException {	
 		String fetchURL = String.format("%s/events/%d", URL, id);
 		String json = requests.get(fetchURL, this.getToken());
-		
-        // System.out.println(json);
-		
+				
 		JsonObject jsonObject = gson.fromJson(json, JsonElement.class).getAsJsonObject();
 		JsonArray jsonArray = jsonObject.get("events").getAsJsonArray();
 		

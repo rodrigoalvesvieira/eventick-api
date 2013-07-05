@@ -16,6 +16,7 @@ package br.com.eventick.api;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -36,7 +37,7 @@ public class Event {
 	private String venue;
 	private String slug;
 	
-	private Date start_at;
+//	private Date start_at;
 	
 	private List<Attendee> attendees;
 	private List<Ticket> tickets;
@@ -91,20 +92,20 @@ public class Event {
 		this.slug = slug;
 	}
 
-	public Date getStart_at() {
-		return this.start_at;
-	}
+//	public Date getStart_at() {
+//		return this.start_at;
+//	}
+//
+//	public void setStart_at(Date start_at) {
+//		this.start_at = start_at;
+//	}
 
-	public void setStart_at(Date start_at) {
-		this.start_at = start_at;
-	}
-
-	public List<Attendee> getAttendees() throws IOException {
+	public List<Attendee> getAttendees() throws IOException, InterruptedException, ExecutionException {
 		this.setAttendees();
 		return this.attendees;
 	}
 
-	public void setAttendees() throws IOException {
+	public void setAttendees() throws IOException, InterruptedException, ExecutionException {
 		String fetchURL = String.format("%s/%d/attendees", URL, this.id);
 		String json = api.getRequests().get(fetchURL, this.getApi().getToken());
 		JsonObject jsonObject = api.getGson().fromJson(json, JsonElement.class).getAsJsonObject();			
@@ -123,12 +124,12 @@ public class Event {
 		}
 	}
 	
-	public List<Ticket> getTickets() throws IOException {
+	public List<Ticket> getTickets() throws IOException, InterruptedException, ExecutionException {
 		this.setTickets();
 		return this.tickets;
 	}
 	
-	public void setTickets() throws IOException {
+	public void setTickets() throws IOException, InterruptedException, ExecutionException {
 		String fetchURL = String.format("%s/%d", URL);
 		String json = api.getRequests().get(fetchURL, this.getApi().getToken());
 		JsonObject jsonObject = api.getGson().fromJson(json, JsonElement.class).getAsJsonObject();			
