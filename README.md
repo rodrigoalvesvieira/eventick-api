@@ -1,5 +1,7 @@
 ## Eventick
 
+[![Build Status](https://secure.travis-ci.org/rodrigoalvesvieira/eventick-api.png?branch=master)](http://travis-ci.org/rodrigoalvesvieira/eventick-api)
+
 Wrapper Java para a API JSON do Eventick
 
 Para mais informações sobre a API em si, visite sua página oficial http://developer.eventick.com.br/
@@ -50,6 +52,12 @@ List<Ticket> = evento.getTickets();
 Você pode contribuir de várias formas para o projeto. Pode ser melhorando a documentação (Javadocs ou [Wiki]), [reportando bugs], criando testes, aplicações de exemplo e qualquer outra coisa que possa melhorar o projeto ou a vida de quem o usa.
 
 Você pode dar uma olhada nos [Issues existentes] :)
+
+#### Build e Testes
+
+Execute o seguinte comando para fazer o Maven realizar o build do projeto e em seguida rodar os testes:
+
+`$ mvn test`
 
 #### TO-DO
 
