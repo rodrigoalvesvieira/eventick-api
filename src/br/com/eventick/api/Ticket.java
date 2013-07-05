@@ -22,11 +22,20 @@ public class Ticket {
 	private int id;
 	private String name;
 	
+	/**
+	 * Construtor do ingresso ({@link Ticket})
+	 * @param id o ID do ingresso na API do Eventick
+	 * @param name o nome/titulo do ingresso
+	 */
 	public Ticket(int id, String name) {
 		this.id = id;
 		this.name = name;
 	}
 
+	/**
+	 * Informa o ID do ingresso na API do Eventick
+	 * @return
+	 */
 	public int getId() {
 		return this.id;
 	}
@@ -35,6 +44,10 @@ public class Ticket {
 		this.id = id;
 	}
 
+	/**
+	 * Informa o nome do Ingresso
+	 * @return uma {@link String}
+	 */
 	public String getName() {
 		return this.name;
 	}

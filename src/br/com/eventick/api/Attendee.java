@@ -31,6 +31,10 @@ public class Attendee {
 	
 	private Date checked_at;
 	
+	/**
+	 * Construtor do {@link Attendee}
+	 * @param api um objeto {@link EventickAPI} com token
+	 */
 	public Attendee(EventickAPI api) {
 		this.api = api;
 	}
@@ -43,6 +47,10 @@ public class Attendee {
 		this.api = api;
 	}
 
+	/**
+	 * Retorna o ID do participante na API do Eventick
+	 * @return
+	 */
 	public int getId() {
 		return this.id;
 	}
@@ -63,6 +71,10 @@ public class Attendee {
 		this.name = name;
 	}
 
+	/**
+	 * Informa o codigo do participante {@link Attendee}
+	 * @return
+	 */
 	public String getCode() {
 		return this.code;
 	}
@@ -71,6 +83,10 @@ public class Attendee {
 		this.code = code;
 	}
 
+	/**
+	 * Informa o tipo do ingresso
+	 * @return uma {@link String}
+	 */
 	public String getTicket_type() {
 		return this.ticket_type;
 	}
@@ -79,6 +95,10 @@ public class Attendee {
 		this.ticket_type = ticket_type;
 	}
 
+	/**
+	 * Informa a data de check-in do participante ({@link Attendee}
+	 * @return um objeto {@link Date}
+	 */
 	public Date getChecked_at() {
 		return this.checked_at;
 	}
