@@ -30,6 +30,7 @@ import java.util.concurrent.ExecutionException;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Representa a entidade de Evento (Event) na API do Eventick
@@ -40,13 +41,21 @@ public class Event {
 	private EventickAPI api;
 
 	public static String URL = EventickAPI.URL + "/events";
+
+    @SerializedName("id")
 	private int id;
 
+    @SerializedName("title")
 	private String title;
+
+    @SerializedName("venue")
 	private String venue;
+
+    @SerializedName("slug")
 	private String slug;
 
-	private Date start_at;
+    @SerializedName("start_at")
+	private Date startAt;
 
 	private List<Attendee> attendees;
 	private List<Ticket> tickets;
@@ -134,12 +143,12 @@ public class Event {
 	 * Informa a data de inicio do evento
 	 * @return um objeto {@link Date}
 	 */
-	public Date getStart_at() {
-		return this.start_at;
+	public Date getStartAt() {
+		return this.startAt;
 	}
 
-	public void setStart_at(Date start_at) {
-		this.start_at = start_at;
+	public void setStartAt(Date start_at) {
+		this.startAt = start_at;
 	}
 
 	public List<Attendee> getAttendees() throws IOException, InterruptedException, ExecutionException {
@@ -162,7 +171,7 @@ public class Event {
 
 		Attendee att;
 		int i = 0;
-		
+
 		for (; i < jsonArray.size(); i++) {
 			att = this.api.getGson().fromJson(jsonArray.get(i), Attendee.class);
 			this.attendees.add(att);

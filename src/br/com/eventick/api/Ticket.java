@@ -21,13 +21,18 @@
 
 package br.com.eventick.api;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Representa a entidade de Ingresso (Ticket) na API do Eventick
  * @author Rodrigo Alves
  *
  */
 public class Ticket {
+	@SerializedName("id")
 	private int id;
+	
+	@SerializedName("name")
 	private String name;
 
 	/**

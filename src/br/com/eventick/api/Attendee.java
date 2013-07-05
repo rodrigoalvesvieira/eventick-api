@@ -23,6 +23,8 @@ package br.com.eventick.api;
 
 import java.util.Date;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Representa a entidade de Participante (Attendee) na API do Eventick
  * @author Rodrigo Alves
@@ -31,13 +33,20 @@ import java.util.Date;
 public class Attendee {
 	private EventickAPI api;
 
+    @SerializedName("id")
 	private int id;
 
+    @SerializedName("name")
 	private String name;
-	private String code;
-	private String ticket_type;
 
-	private Date checked_at;
+	@SerializedName("code")
+	private String code;
+
+	@SerializedName("ticket_type")
+	private String ticketType;
+
+	@SerializedName("checked_at")
+	private Date checkedAt;
 
 	/**
 	 * Construtor do {@link Attendee}
@@ -95,23 +104,23 @@ public class Attendee {
 	 * Informa o tipo do ingresso
 	 * @return uma {@link String}
 	 */
-	public String getTicket_type() {
-		return this.ticket_type;
+	public String getTicketType() {
+		return this.ticketType;
 	}
 
-	public void setTicket_type(String ticket_type) {
-		this.ticket_type = ticket_type;
+	public void setTicketType(String ticket_type) {
+		this.ticketType = ticket_type;
 	}
 
 	/**
 	 * Informa a data de check-in do participante ({@link Attendee}
 	 * @return um objeto {@link Date}
 	 */
-	public Date getChecked_at() {
-		return this.checked_at;
+	public Date getCheckedAt() {
+		return this.checkedAt;
 	}
 
-	public void setChecked_at(Date checked_at) {
-		this.checked_at = checked_at;
+	public void setCheckedAt(Date checked_at) {
+		this.checkedAt = checked_at;
 	}
 }

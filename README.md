@@ -35,7 +35,7 @@ Event evento = api.getEventById(idEvento);
 
 evento.getTitle();      // retorna título do evento
 evento.getVenue();      // retorna local do evento
-evento.getStart_at();   // data de início do evento
+evento.getStartAt();   // data de início do evento
 evento.getAPIURL());    // URL do evento na API
 
 evento.getEventWebsiteURL() // URL do evento no site (URL para humanos)
