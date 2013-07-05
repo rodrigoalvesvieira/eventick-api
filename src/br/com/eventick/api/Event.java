@@ -155,9 +155,7 @@ public class Event {
 		
 		for (; i < jsonArray.size(); i++) {
 			strAtt = jsonArray.get(i).toString();
-			att = this.api.getGson().fromJson(json, Attendee.class);
-			att.setApi(this.getApi());
-			
+			att = this.api.getGson().fromJson(json, Attendee.class);			
 			this.attendees.add(att);
 		}
 	}
