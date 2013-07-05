@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>eventick-api by rodrigoalvesvieira</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>eventick-api</h1>
+        <h2>Wrapper Java para a API JSON do Eventick</h2>
+        <a href="https://github.com/rodrigoalvesvieira/eventick-api" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <p>Para mais informações sobre a API em si, visite sua página oficial <a href="http://developer.eventick.com.br/">http://developer.eventick.com.br/</a></p>
+
+<ul>
+<li>Versão suportada da API: V1</li>
+<li>Versão do wrapper: 0.1.0</li>
+</ul><h2>
+<a name="uso" class="anchor" href="#uso"><span class="octicon octicon-link"></span></a>Uso</h2>
+
+<h3>
+<a name="autenticao" class="anchor" href="#autenticao"><span class="octicon octicon-link"></span></a>Autenticação</h3>
+
+<p>A API do Eventick requer autenticação que é realizada através do HTTP por um token de acesso que o serviço lhe oferece, para obter um, basta ter uma conta no Eventick</p>
+
+<p>Para resgatar seu token, rode o seguinte comando <code>curl</code> como <a href="http://developer.eventick.com.br/docs#autenticao">documentado na API</a>:</p>
+
+<p><code>curl https://www.eventick.com.br/api/v1/tokens.json --user 'seuemail@gmail.com:senha'</code></p>
+
+<h3>
+<a name="recuperando-dados" class="anchor" href="#recuperando-dados"><span class="octicon octicon-link"></span></a>Recuperando dados</h3>
+
+<div class="highlight"><pre>
+<span class="n">String</span> <span class="n">meuToken</span> <span class="o">=</span> <span class="s">"abcdefghijlmnopqrstu"</span><span class="o">;</span>
+<span class="n">EventickAPI</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EventickAPI</span><span class="o">(</span><span class="n">meuToken</span><span class="o">);</span>
+
+<span class="c1">// Retorna uma lista de todos os seus eventos</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">getMyEvents</span><span class="o">();</span>
+
+<span class="c1">// Obtenha informações de um evento seu pelo id</span>
+<span class="kt">int</span> <span class="n">idEvento</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span>
+<span class="n">Event</span> <span class="n">evento</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">getEventById</span><span class="o">(</span><span class="n">idEvento</span><span class="o">);</span>
+
+<span class="n">evento</span><span class="o">.</span><span class="na">getTitle</span><span class="o">();</span>      <span class="c1">// retorna título do evento</span>
+<span class="n">evento</span><span class="o">.</span><span class="na">getVenue</span><span class="o">();</span>      <span class="c1">// retorna local do evento</span>
+<span class="n">evento</span><span class="o">.</span><span class="na">getStart_at</span><span class="o">();</span>   <span class="c1">// data de início do evento</span>
+<span class="n">evento</span><span class="o">.</span><span class="na">getAPIURL</span><span class="o">());</span>    <span class="c1">// URL do evento na API</span>
+
+<span class="n">evento</span><span class="o">.</span><span class="na">getEventWebsiteURL</span><span class="o">()</span> <span class="c1">// URL do evento no site (URL para humanos)</span>
+
+<span class="c1">// Obtenha a lista de participantes daquele evento</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Attendee</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">evento</span><span class="o">.</span><span class="na">getAttendees</span><span class="o">();</span>
+
+<span class="c1">// Obtenha a lista de ingressos daquele evento</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Ticket</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">evento</span><span class="o">.</span><span class="na">getTickets</span><span class="o">();</span>
+</pre></div>
+
+<h2>
+<a name="contribuindo" class="anchor" href="#contribuindo"><span class="octicon octicon-link"></span></a>Contribuindo</h2>
+
+<p>Você pode contribuir de várias formas para o projeto. Pode ser melhorando a documentação (Javadocs ou <a href="https://github.com/rodrigoalvesvieira/eventick-api/wiki">Wiki</a>), <a href="https://github.com/rodrigoalvesvieira/eventick-api/issues/new">reportando bugs</a>, criando testes, aplicações de exemplo e qualquer outra coisa que possa melhorar o projeto ou a vida de quem o usa.</p>
+
+<p>Você pode dar uma olhada nos <a href="https://github.com/rodrigoalvesvieira/eventick-api/issues">Issues existentes</a> :)</p>
+
+<h4>
+<a name="build-e-testes" class="anchor" href="#build-e-testes"><span class="octicon octicon-link"></span></a>Build e Testes</h4>
+
+<p>Execute o seguinte comando para fazer o Maven realizar o build do projeto e em seguida rodar os testes:</p>
+
+<p><code>$ mvn test</code></p>
+
+<h4>
+<a name="to-do" class="anchor" href="#to-do"><span class="octicon octicon-link"></span></a>TO-DO</h4>
+
+<ul>
+<li>Adicionar suporte a testes com JUnit</li>
+<li>Adicionar mais exemplos à <a href="https://github.com/rodrigoalvesvieira/eventick-api/wiki">Wiki</a>
+</li>
+</ul><h2>
+<a name="problemas" class="anchor" href="#problemas"><span class="octicon octicon-link"></span></a>Problemas</h2>
+
+<p>Se você encontrou algum bug ou outro problema, <a href="https://github.com/rodrigoalvesvieira/eventick-api/issues/new">crie um Issue</a> detalhado dele!
+No caso de você achar que esse problema está na API em si, e não no wrapper, mande um email pra <a href="mailto:api@eventick.com.br">api@eventick.com.br</a></p>
+
+<h2>
+<a name="licena" class="anchor" href="#licena"><span class="octicon octicon-link"></span></a>Licença</h2>
+
+<p>Esse projeto é liberado sob a licença do MIT, uma cópia (em inglês) está na raiz do projeto no arquivo LICENSE.txt</p>
+
+<p>Copyright (c) 2013 Rodrigo Alves</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/rodrigoalvesvieira/eventick-api/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/rodrigoalvesvieira/eventick-api/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/rodrigoalvesvieira/eventick-api"></a> is maintained by <a href="https://github.com/rodrigoalvesvieira">rodrigoalvesvieira</a>.</p>
+
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
