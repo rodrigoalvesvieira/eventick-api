@@ -42,10 +42,21 @@ public class Event {
 	private List<Attendee> attendees;
 	private List<Ticket> tickets;
 	
+	/**
+	 * Construtor basico de {@link Event}
+	 * @param api um objeto {@link EventickAPI} com token
+	 */
 	public Event(EventickAPI api) {
 		this.api = api;
 	}
 	
+	/**
+	 * Construtor composto de {@link Event}
+	 * @param api api um objeto {@link EventickAPI} com token
+	 * @param id o ID do {@link Event} na API do Eventick
+	 * @param title o titulo do evento
+	 * @param venue o local do evento
+	 */
 	public Event(EventickAPI api, int id, String title, String venue) {
 		this(api);
 		this.id = id;
@@ -60,6 +71,10 @@ public class Event {
 		this.api = api;
 	}
 
+	/**
+	 * Informa o ID do evento na API do Eventick 
+	 * @return
+	 */
 	public int getId() {
 		return this.id;
 	}
@@ -68,6 +83,10 @@ public class Event {
 		this.id = id;
 	}
 
+	/**
+	 * Informa o titulo do evento
+	 * @return uma {@link String}
+	 */
 	public String getTitle() {
 		return this.title;
 	}
@@ -76,6 +95,10 @@ public class Event {
 		this.title = title;
 	}
 
+	/**
+	 * Informa o local do evento
+	 * @return uma {@link String}
+	 */
 	public String getVenue() {
 		return this.venue;
 	}
@@ -84,6 +107,10 @@ public class Event {
 		this.venue = venue;
 	}
 
+	/**
+	 * Informa o slug do evento no website
+	 * @return uma {@link String}
+	 */
 	public String getSlug() {
 		return this.slug;
 	}
@@ -92,6 +119,10 @@ public class Event {
 		this.slug = slug;
 	}
 
+	/**
+	 * Informa a data de inicio do evento
+	 * @return um objeto {@link Date}
+	 */
 	public Date getStart_at() {
 		return this.start_at;
 	}
@@ -105,6 +136,13 @@ public class Event {
 		return this.attendees;
 	}
 
+	/**
+	 * Retorna a lista de participantes {@link Attendee} do evento
+	 * @return uma {@link List} de {@link Attendee}
+	 * @throws IOException
+	 * @throws InterruptedException
+	 * @throws ExecutionException
+	 */
 	public void setAttendees() throws IOException, InterruptedException, ExecutionException {
 		String fetchURL = String.format("%s/%d/attendees", URL, this.id);
 		String json = api.getRequests().get(fetchURL, this.getApi().getToken());
@@ -124,6 +162,13 @@ public class Event {
 		}
 	}
 	
+	/**
+	 * Retorna a lista de ingressos {@link Ticket} do evento
+	 * @return uma {@link List} de {@link Ticket}
+	 * @throws IOException
+	 * @throws InterruptedException
+	 * @throws ExecutionException
+	 */
 	public List<Ticket> getTickets() throws IOException, InterruptedException, ExecutionException {
 		this.setTickets();
 		return this.tickets;
@@ -147,11 +192,19 @@ public class Event {
 		}
 	}
 	
-	public String getEventWebsiteURL() {
+	/**
+	 * Informa a URL do evento no site. URL para humanos
+	 * @return um objeto {@link String}
+	 */
+	public String getWebsiteURL() {
 		return String.format("http://eventick.com.br/%s", this.getSlug());
 	}
 
-	public String getEventURL() {
+	/**
+	 * Informa a URL do evento na API
+	 * @return um objeto {@link String}
+	 */
+	public String getAPIURL() {
 		return String.format("%s/%d", URL, this.id);
 	}
 }
