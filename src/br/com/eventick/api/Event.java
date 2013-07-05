@@ -37,7 +37,7 @@ public class Event {
 	private String venue;
 	private String slug;
 	
-//	private Date start_at;
+	private Date start_at;
 	
 	private List<Attendee> attendees;
 	private List<Ticket> tickets;
@@ -92,13 +92,13 @@ public class Event {
 		this.slug = slug;
 	}
 
-//	public Date getStart_at() {
-//		return this.start_at;
-//	}
-//
-//	public void setStart_at(Date start_at) {
-//		this.start_at = start_at;
-//	}
+	public Date getStart_at() {
+		return this.start_at;
+	}
+
+	public void setStart_at(Date start_at) {
+		this.start_at = start_at;
+	}
 
 	public List<Attendee> getAttendees() throws IOException, InterruptedException, ExecutionException {
 		this.setAttendees();
@@ -145,6 +145,10 @@ public class Event {
 			
 			this.tickets.add(tick);
 		}
+	}
+	
+	public String getEventWebsiteURL() {
+		return String.format("http://eventick.com.br/%s", this.getSlug());
 	}
 
 	public String getEventURL() {
