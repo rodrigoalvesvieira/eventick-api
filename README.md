@@ -45,6 +45,22 @@ List<Attendee> = evento.getAttendees();
 List<Ticket> = evento.getTickets();
 ```
 
+## Contribuindo
+
+Você pode contribuir de várias formas para o projeto. Pode ser melhorando a documentação (Javadocs ou [Wiki]), [reportando bugs], criando testes, aplicações de exemplo e qualquer outra coisa que possa melhorar o projeto ou a vida de quem o usa.
+
+Você pode dar uma olhada nos [Issues existentes] :)
+
+#### TO-DO
+
+* Adicionar suporte a testes com JUnit
+* Adicionar mais exemplos à [Wiki]
+
+## Problemas
+
+Se você encontrou algum bug ou outro problema, [crie um Issue] detalhado dele!
+No caso de você achar que esse problema está na API em si, e não no wrapper, mande um email pra [api@eventick.com.br]
+
 ## Licença
 
 Esse projeto é liberado sob a licença do MIT, uma cópia (em inglês) está na raiz do projeto no arquivo LICENSE.txt
@@ -52,3 +68,8 @@ Esse projeto é liberado sob a licença do MIT, uma cópia (em inglês) está na
 Copyright (c) 2013 Rodrigo Alves
 
 [documentado na API]: http://developer.eventick.com.br/docs#autenticao
+[crie um Issue]: https://github.com/rodrigoalvesvieira/eventick-api/issues/new
+[reportando bugs]: https://github.com/rodrigoalvesvieira/eventick-api/issues/new
+[api@eventick.com.br]: mailto:api@eventick.com.br
+[Issues existentes]: https://github.com/rodrigoalvesvieira/eventick-api/issues
+[Wiki]: https://github.com/rodrigoalvesvieira/eventick-api/wiki
