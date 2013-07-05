@@ -22,6 +22,7 @@
 package br.com.eventick.api;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -56,6 +57,8 @@ public class Event {
 	 */
 	public Event(EventickAPI api) {
 		this.api = api;
+		this.attendees = new ArrayList<Attendee>();
+		this.tickets = new ArrayList<Ticket>();
 	}
 
 	/**
@@ -157,13 +160,11 @@ public class Event {
 		JsonObject jsonObject = api.getGson().fromJson(json, JsonElement.class).getAsJsonObject();
 		JsonArray jsonArray = jsonObject.get("attendees").getAsJsonArray();
 
-		String strAtt;
 		Attendee att;
 		int i = 0;
-
+		
 		for (; i < jsonArray.size(); i++) {
-			strAtt = jsonArray.get(i).toString();
-			att = this.api.getGson().fromJson(json, Attendee.class);
+			att = this.api.getGson().fromJson(jsonArray.get(i), Attendee.class);
 			this.attendees.add(att);
 		}
 	}
@@ -181,19 +182,16 @@ public class Event {
 	}
 
 	public void setTickets() throws IOException, InterruptedException, ExecutionException {
-		String fetchURL = String.format("%s/%d", URL);
+		String fetchURL = String.format("%s/%d", URL, this.id);
 		String json = api.getRequests().get(fetchURL, this.getApi().getToken());
 		JsonObject jsonObject = api.getGson().fromJson(json, JsonElement.class).getAsJsonObject();
 		JsonArray jsonArray = jsonObject.get("tickets").getAsJsonArray();
 
-		String strTick;
 		Ticket tick;
 		int i = 0;
 
 		for (; i < jsonArray.size(); i++) {
-			strTick = jsonArray.get(i).toString();
-			tick = this.api.getGson().fromJson(json, Ticket.class);
-
+			tick = this.api.getGson().fromJson(jsonArray.get(i), Ticket.class);
 			this.tickets.add(tick);
 		}
 	}
@@ -203,7 +201,7 @@ public class Event {
 	 * @return um objeto {@link String}
 	 */
 	public String getWebsiteURL() {
-		return String.format("http://eventick.com.br/%s", this.getSlug());
+		return String.format("http://eventick.com.br/%s", this.slug);
 	}
 
 	/**

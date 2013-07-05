@@ -22,20 +22,15 @@
 package br.com.eventick.api;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-
 import br.com.eventick.http.Requests;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.stream.JsonReader;
 
 /**
  * Classe elementar de representacao da API do Eventick
@@ -47,7 +42,6 @@ public class EventickAPI {
     public static final String VERSION = "0.1.0"; // versao atual da biblioteca
 	private final Gson gson;
 	private final Requests requests;
-    private final DateFormat df;
 
 	public static String URL = "https://www.eventick.com.br/api/v1";
 	private String token;
@@ -56,9 +50,12 @@ public class EventickAPI {
 		this.gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ssX").create();
 		this.requests = new Requests();
 		this.token = token;
-		this.df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
 	}
 
+	/**
+	 * Informa o token de autenticacao que esta sendo usado para a exploracao da API
+	 * @return uma {@link String}
+	 */
 	public String getToken() {
 		return this.token;
 	}
@@ -83,30 +80,26 @@ public class EventickAPI {
 	 * @throws ExecutionException
 	 */
 	public List<Event> getMyEvents() throws IOException, InterruptedException, ExecutionException {
-		List<Event> collection = null;
+		List<Event> collection = new ArrayList<Event>();
 
 		String fetchURL = String.format("%s/events", URL);
 		String json = requests.get(fetchURL, this.getToken());
 		JsonObject jsonObject = gson.fromJson(json, JsonElement.class).getAsJsonObject();
 		JsonArray jsonArray = jsonObject.get("events").getAsJsonArray();
 
-		String strEve;
 		Event eve;
 		int i = 0;
-
+		
 		for (; i < jsonArray.size(); i++) {
-			strEve = jsonArray.get(i).toString();
-			eve = gson.fromJson(json, Event.class);
-			eve.setApi(this);
-
-			collection.add(eve);
+		    eve = gson.fromJson(jsonArray.get(i), Event.class);
+		    collection.add(eve);
 		}
 
 		return collection;
 	}
 
 	/**
-	 * Otenha qualquer um de seus eventos a partir do id
+	 * Otenha qualquer um de seus eventos a partir do ID
 	 * @param id, ID do evento
 	 * @return
 	 * @return um objeto {@link Event} daquele evento

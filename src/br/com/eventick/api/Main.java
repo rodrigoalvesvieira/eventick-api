@@ -3,10 +3,7 @@ package br.com.eventick.api;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-import org.apache.log4j.Logger;
-
 public class Main {
-    private static Logger log = Logger.getLogger(EventickAPI.class);  
 	public static void main(String[] args) throws IOException, InterruptedException, ExecutionException {
 		
 		String meuToken = "ENGb1waVGydVbGwQr8U2";
@@ -23,5 +20,12 @@ public class Main {
 		System.out.println(evento.getAPIURL());
 
 		System.out.println(evento.getWebsiteURL());
+		
+		int index = 0;
+		
+		for (Event e: api.getMyEvents()) {
+			System.out.println("Evento " + ++index);
+			System.out.println(e.getTitle() + " - " + e.getAPIURL());
+		}
 	}
 }
