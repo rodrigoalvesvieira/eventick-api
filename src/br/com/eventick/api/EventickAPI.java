@@ -36,6 +36,7 @@ import com.google.gson.stream.JsonReader;
  *
  */
 public class EventickAPI {
+    public static final String VERSION = "0.1.0"; // versao atual da biblioteca
 	private final Gson gson;
 	private final Requests requests;
     private final DateFormat df;
