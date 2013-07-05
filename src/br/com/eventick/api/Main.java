@@ -19,5 +19,9 @@ public class Main {
 		
 		System.out.println(evento.getTitle());
 		System.out.println(evento.getVenue());
+		System.out.println(evento.getStart_at());
+		System.out.println(evento.getEventURL());
+
+		System.out.println(evento.getEventWebsiteURL());
 	}
 }

@@ -22,6 +22,7 @@ import java.util.concurrent.ExecutionException;
 import br.com.eventick.http.Requests;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -43,7 +44,7 @@ public class EventickAPI {
 	private String token;
 	
 	public EventickAPI(String token) {
-		this.gson = new Gson();
+		this.gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ssX").create();
 		this.requests = new Requests();
 		this.token = token;
 		this.df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
