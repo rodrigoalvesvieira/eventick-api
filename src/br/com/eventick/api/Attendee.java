@@ -55,6 +55,36 @@ public class Attendee {
 	public Attendee(EventickAPI api) {
 		this.api = api;
 	}
+	
+	/**
+	 * Construtor secundario do {@link Attendee}
+	 * @param api um objeto {@link EventickAPI} com token
+	 * @param id o ID do participante na API do Eventick
+	 * @param name o nome do participante na API do Eventick
+	 */
+	public Attendee(EventickAPI api, int id, String name) {
+		this(api);
+		this.id = id;
+		this.name = name;
+	}
+	
+	/**
+	 * Construtor completo do {@link Attendee}
+	 * @param api um objeto {@link EventickAPI} com token
+	 * @param id o ID do participante na API do Eventick
+	 * @param name o nome do participante na API do Eventick
+	 * @param code
+	 * @param ticketType o tipo de ingresso ({@link Ticket}) do participante
+	 * @param checkedAt a data ({@link Date}) do check-in do participante
+	 */
+	public Attendee(EventickAPI api, int id, String name, String code, String ticketType, Date checkedAt) {
+		this(api);
+		this.id = id;
+		this.name = name;
+		this.code = code;
+		this.ticketType = ticketType;
+		this.checkedAt = checkedAt;
+	}
 
 	public EventickAPI getApi() {
 		return this.api;
