@@ -80,6 +80,7 @@ public class Event {
 	public Event(EventickAPI api, int id, String title, String venue) {
 		this(api);
 		this.id = id;
+		this.title = title;
 		this.venue = venue;
 	}
 
