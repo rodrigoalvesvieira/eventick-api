@@ -1,38 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
     <title>eventick-api by rodrigoalvesvieira</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
   </head>
-
   <body>
-    <header>
-      <div class="inner">
-        <h1>eventick-api</h1>
-        <h2>Wrapper Java para a API JSON do Eventick</h2>
-        <a href="https://github.com/rodrigoalvesvieira/eventick-api" class="button"><small>View project on</small>GitHub</a>
-      </div>
-    </header>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/rodrigoalvesvieira/eventick-api">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/rodrigoalvesvieira/eventick-api/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/rodrigoalvesvieira/eventick-api/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <p>Para mais informações sobre a API em si, visite sua página oficial <a href="http://developer.eventick.com.br/">http://developer.eventick.com.br/</a></p>
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>eventick-api</h1>
+          <p>Wrapper Java para a API JSON do Eventick</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/rodrigoalvesvieira">rodrigoalvesvieira</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <p>Para mais informações sobre a API em si, visite sua página oficial <a href="http://developer.eventick.com.br/">http://developer.eventick.com.br/</a></p>
 
 <ul>
 <li>Versão suportada da API: V1</li>
-<li>Versão do wrapper: 0.1.1</li>
+<li>Versão do wrapper: 0.1.0</li>
 </ul><h2>
 <a name="uso" class="anchor" href="#uso"><span class="octicon octicon-link"></span></a>Uso</h2>
 
@@ -61,10 +71,10 @@
 
 <span class="n">evento</span><span class="o">.</span><span class="na">getTitle</span><span class="o">();</span>      <span class="c1">// retorna título do evento</span>
 <span class="n">evento</span><span class="o">.</span><span class="na">getVenue</span><span class="o">();</span>      <span class="c1">// retorna local do evento</span>
-<span class="n">evento</span><span class="o">.</span><span class="na">getStartAt</span><span class="o">();</span>   <span class="c1">// data de início do evento</span>
+<span class="n">evento</span><span class="o">.</span><span class="na">getStart_at</span><span class="o">();</span>   <span class="c1">// data de início do evento</span>
 <span class="n">evento</span><span class="o">.</span><span class="na">getAPIURL</span><span class="o">());</span>    <span class="c1">// URL do evento na API</span>
 
-<span class="n">evento</span><span class="o">.</span><span class="na">getWebsiteURL</span><span class="o">()</span> <span class="c1">// URL do evento no site (URL para humanos)</span>
+<span class="n">evento</span><span class="o">.</span><span class="na">getEventWebsiteURL</span><span class="o">()</span> <span class="c1">// URL do evento no site (URL para humanos)</span>
 
 <span class="c1">// Obtenha a lista de participantes daquele evento</span>
 <span class="n">List</span><span class="o">&lt;</span><span class="n">Attendee</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">evento</span><span class="o">.</span><span class="na">getAttendees</span><span class="o">();</span>
@@ -106,25 +116,10 @@ No caso de você achar que esse problema está na API em si, e não no wrapper, 
 <p>Esse projeto é liberado sob a licença do MIT, uma cópia (em inglês) está na raiz do projeto no arquivo LICENSE.txt</p>
 
 <p>Copyright (c) 2013 Rodrigo Alves</p>
-        </section>
+      </section>
 
-        <aside id="sidebar">
-          <a href="https://github.com/rodrigoalvesvieira/eventick-api/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/rodrigoalvesvieira/eventick-api/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
-
-          <p class="repo-owner"><a href="https://github.com/rodrigoalvesvieira/eventick-api"></a> is maintained by <a href="https://github.com/rodrigoalvesvieira">rodrigoalvesvieira</a>.</p>
-
-          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
     </div>
-
-  
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
   </body>
 </html>
