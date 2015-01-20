@@ -27,7 +27,7 @@ String meuToken = "abcdefghijlmnopqrstu";
 EventickAPI api = new EventickAPI(meuToken);
 
 // Retorna uma lista de todos os seus eventos
-List<Event> = api.getMyEvents();
+List<Event> events = api.getMyEvents();
 
 // Obtenha informações de um evento seu pelo id
 int idEvento = 1000;
